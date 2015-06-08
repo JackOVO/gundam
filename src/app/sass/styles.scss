@@ -1,0 +1,103 @@
+@import "normalize.scss";
+@import "icons.scss";
+@import "tabs.scss";
+@import "global.scss";
+
+div {
+  /* outline: 1px solid orange; */
+}
+
+$gundam-side-width: rem-calc(170);
+$gundam-tool-height: rem-calc(44);
+$gundam-content-tool-width: rem-calc(70);
+$gundam-content-table-td-height: rem-calc(50);
+$gundam-content-table-header-height: rem-calc(40);
+$gundam-content-table-padding: rem-calc(19) 0 $gundam-content-table-td-height rem-calc(19);
+
+$gundam-side-bg-color: #e5f3ff;
+$gundam-side-border-color: #3b9eff;
+$gundam-tool-bg-color: #ffffff;
+$gundam-content-bg-color: #fafafa;
+$gundam-content-border-color: #aeaeae;
+
+$gundam-content-table-border-color: #d3d7d9;
+$gundam-content-table-odd-color: #ffffff;
+$gundam-content-table-even-color: #fafafa;
+$gundam-content-table-header-bg-color: #f0f0f0;
+
+
+#gundam-main {
+  height: 100%;
+  padding-left: $gundam-side-width;
+
+  #gundam-side {
+    height: 100%;
+    width: $gundam-side-width;
+    padding-top: $gundam-tool-height;
+    margin-left: -$gundam-side-width;
+    background-color: $gundam-side-bg-color;
+    border: 1px solid $gundam-side-border-color;
+    border-top: 0; border-bottom: 0;
+  }
+
+  #gundam-container {
+    height: 100%;
+    width: 100%;
+    padding-top: $gundam-tool-height;
+
+    #gundam-tool {
+      height: $gundam-tool-height;
+      margin-top: -$gundam-tool-height;
+      line-height: $gundam-tool-height;
+      background-color: $gundam-tool-bg-color;
+    }
+
+    #gundam-content {
+      height: 100%;
+      padding-right: $gundam-content-tool-width;
+      background-color: $gundam-content-bg-color;
+      border-top: 1px solid $gundam-content-border-color;
+
+      #gundam-content-table {
+        height: 100%;
+        width: 100%;
+        padding: $gundam-content-table-padding;
+
+        table {
+          width: 100%;
+          border: 1px solid $gundam-content-table-border-color;
+        }
+
+        thead td {
+          height: $gundam-content-table-header-height;
+          background-color: $gundam-content-table-header-bg-color;
+          opacity: .5;
+        }
+
+        tbody {
+          tr:nth-child(even) > td { background-color: $gundam-content-table-even-color; }
+          tr:nth-child(odd) > td {  background-color: $gundam-content-table-odd-color; }
+          td {  height: $gundam-content-table-td-height; }
+        }
+
+        #gundam-content-page {
+          height: $gundam-content-table-td-height;
+          margin-top: -1px;
+          border-left: 1px solid $gundam-content-table-border-color;
+          border-right: 1px solid $gundam-content-table-border-color;
+          background-color: #ffffff;
+        }
+      }
+
+      #gundam-content-tool {
+        height: 100%;
+        width: $gundam-content-tool-width;
+        padding-top: rem-calc(19);
+        margin-right: -$gundam-content-tool-width;
+      }
+    }
+  }
+}
+
+
+

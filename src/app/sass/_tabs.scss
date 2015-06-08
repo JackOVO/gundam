@@ -1,0 +1,39 @@
+@import "global.scss";
+
+@include exports ("tabs") {
+  $tabs-font-size: rem-calc(24);
+  $tabs-item-height: rem-calc(60);
+  $tabs-item-padding-left: rem-calc(30);
+  $tabs-item-icon-margin-right: rem-calc(11);
+
+  $tabs-item-opacity: .5;
+  $tabs-item-hover-opacity: 1;
+  $tabs-item-color: #3b9eff;
+  $tabe-item-bg-color: #e5f3ff;
+  $tabe-item-hover-bg-color: #f2f9ff;
+
+  .tabs {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    .tabs-item {
+      height: $tabs-item-height;
+      padding-left: $tabs-item-padding-left;
+      line-height: $tabs-item-height;
+      font-size: $tabs-font-size;
+      color: $tabs-item-color;
+      opacity: $tabs-item-opacity;
+      cursor: pointer;
+
+      &:hover, &.selected {
+        opacity: $tabs-item-hover-opacity;
+        background-color: $tabe-item-hover-bg-color;
+      }
+    }
+
+    .icon {
+      margin-right: $tabs-item-icon-margin-right;
+    }
+  }
+}

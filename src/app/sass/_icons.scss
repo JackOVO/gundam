@@ -1,0 +1,76 @@
+@import "global";
+
+$icon-container-width: rem-clac(16);
+$icon-container-width: rem-clac(16);
+
+// 图标容器
+// $width - 控制宽度可以显示的宽度
+// $height - 控制容器可以显示的高度
+@mixin icon-container (
+  $width: $icon-container-width,
+  $height: $icon-container-height) {
+
+  position: relative;
+  display: block;
+  width: $width;
+  height: $height;
+  line-height: $height;
+  overflow: hidden;
+}
+
+// 图标条决定定位
+@mixin icon-bar-posi ($c-height: null, $c-left: null, $c-right: null) {
+  position: relative;
+  & > .icon-bar {
+    line-height: 0;
+    @include posi-vertical-middle($c-height, $c-left, $c-right);
+  }
+}
+
+@include exports ("icons") {
+
+  .icon {
+    display: inline-block;
+  }
+
+  .icon-btn {
+    @extend .icon;
+    cursor: pointer;
+  }
+
+  .icon-user { line-height: 31px; }
+  .icon-groups { line-height: 29px; }
+  .icon-character { line-height: 32px; }
+  .icon-subjection { line-height: 34px; }
+
+  // /assets/images/
+  .icon-sprite, .icon-character, .icon-groups, .icon-subjection, .icon-user {
+    background-image: url('/assets/images/icon-sc4fa431324.png');
+    background-repeat: no-repeat;
+  }
+
+  .icon-character {
+    background-position: 0 0;
+    height: 32px;
+    width: 41px;
+  }
+
+  .icon-groups {
+    background-position: 0 -32px;
+    height: 29px;
+    width: 32px;
+  }
+
+  .icon-subjection {
+    background-position: 0 -61px;
+    height: 34px;
+    width: 31px;
+  }
+
+  .icon-user {
+    background-position: 0 -95px;
+    height: 31px;
+    width: 24px;
+  }
+
+}
