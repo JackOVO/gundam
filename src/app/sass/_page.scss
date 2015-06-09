@@ -1,0 +1,48 @@
+@import "global.scss";
+
+@include exports ("page") {
+
+  $page-num-width: rem-calc(14);
+  $page-num-height: rem-calc(25);
+  $page-num-margin: 0 rem-calc(8);
+  $page-btn-witdh: rem-calc(25);
+
+  $page-num-color: #a3a4ba;
+  $page-num-selected-color: #000;
+  $page-btn-color: #fff;
+  $page-btn-bg-color: #87c4ff;
+  $page-btn-border-color: #87c4ff;
+  $page-btn-disabled-color: #d3d7d9;
+
+  .page {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      width: $page-num-width;
+      height: $page-num-height;
+      margin: $page-num-margin;
+      color: $page-num-color;
+      border-bottom: 1px solid transparent;
+      text-decoration: none;
+
+      &.selected {
+        color: $page-num-selected-color;
+        border-bottom-color: $page-num-selected-color;
+      }
+    }
+
+    .prev, .next {
+      width: $page-btn-witdh;
+      color: $page-btn-color;
+      background-color: $page-btn-bg-color;
+      border-bottom-color: $page-btn-border-color;
+
+      &.disabled {
+        background-color: $page-btn-disabled-color;
+        border-bottom-color: $page-btn-disabled-color;
+      }
+    }
+  }
+}
+

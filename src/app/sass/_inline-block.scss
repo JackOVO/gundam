@@ -1,0 +1,22 @@
+@import "global.scss";
+
+@include exports ("inline-block") {
+
+  $inline-input-height: rem-calc(30);
+  $inline-input-width: rem-calc(90);
+  $inline-input-padding-left: rem-calc(5);
+  $fna-color: #3b9eff;
+
+  .inline-input {
+    height: $inline-input-height;
+    width: $inline-input-width;
+    padding-left: $inline-input-padding-left;
+    line-height: $inline-input-height;
+    outline: 0;
+  }
+
+  .fna {
+    color: $fna-color;
+    text-decoration: none;
+  }
+}

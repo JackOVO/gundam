@@ -38,14 +38,14 @@ $icon-container-width: rem-clac(16);
     cursor: pointer;
   }
 
-  .icon-user { line-height: 31px; }
-  .icon-groups { line-height: 29px; }
+  .icon-user { line-height: 32px; }
+  .icon-groups { line-height: 32px; }
   .icon-character { line-height: 32px; }
-  .icon-subjection { line-height: 34px; }
+  .icon-subjection { line-height: 32px; }
 
   // /assets/images/
   .icon-sprite, .icon-character, .icon-groups, .icon-subjection, .icon-user {
-    background-image: url('/assets/images/icon-sc4fa431324.png');
+    background-image: url('/assets/images/icon-se6985a49ff.png');
     background-repeat: no-repeat;
   }
 
@@ -57,20 +57,20 @@ $icon-container-width: rem-clac(16);
 
   .icon-groups {
     background-position: 0 -32px;
-    height: 29px;
-    width: 32px;
+    height: 32px;
+    width: 41px;
   }
 
   .icon-subjection {
-    background-position: 0 -61px;
-    height: 34px;
-    width: 31px;
+    background-position: 0 -64px;
+    height: 32px;
+    width: 41px;
   }
 
   .icon-user {
-    background-position: 0 -95px;
-    height: 31px;
-    width: 24px;
+    background-position: 0 -96px;
+    height: 32px;
+    width: 41px;
   }
 
 }
