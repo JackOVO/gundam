@@ -44,8 +44,8 @@ $icon-container-width: rem-clac(16);
   .icon-subjection { line-height: 32px; }
 
   // /assets/images/
-  .icon-sprite, .icon-character, .icon-groups, .icon-subjection, .icon-user {
-    background-image: url('/assets/images/icon-se6985a49ff.png');
+  .icon-sprite, .icon-character, .icon-groups, .icon-subjection, .icon-triangle, .icon-user {
+    background-image: url('/assets/images/icon-se5ed1420d5.png');
     background-repeat: no-repeat;
   }
 
@@ -67,10 +67,17 @@ $icon-container-width: rem-clac(16);
     width: 41px;
   }
 
-  .icon-user {
+  .icon-triangle {
     background-position: 0 -96px;
+    height: 8px;
+    width: 5px;
+  }
+
+  .icon-user {
+    background-position: 0 -104px;
     height: 32px;
     width: 41px;
   }
+
 
 }

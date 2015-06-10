@@ -5,20 +5,33 @@
     .module('gundam', [
       'ui.router',
       'ngResource',
-      'ngSanitize'])
+      'ngSanitize',
+      'gundam.core'])
     .config(appConfig);
 
   appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
   function appConfig ($stateProvider, $urlRouterProvider) {
+
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '/orz',
         templateUrl: 'app/core/layout.html',
-        //controller: 'SheetCtrl', // 绑定的试图完成事件, 会广播给大家
-        //controllerAs: 'scvm'
-      });
+        controller: 'IndexCtrl as vm'
+      })
+      .state('home.layout', {
+        url: '/:module',
+        templateUrl: function(stateParam) {
+          console.info(stateParam);
+        },
+        controller: 'IndexCtrl as vm'
+      })
+      /*.state('home.character', {
+        url: '/character',
+        templateUrl: 'app/character/character.html'
+      });*/
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/orz');
+
   }
 })();
 

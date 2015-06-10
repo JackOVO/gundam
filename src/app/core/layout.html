@@ -1,21 +1,48 @@
-<!-- <div id="gundam-main">
+<div id="gundam-main">
   <div id="gundam-side" class="left">
     <ul class="tabs">
-      <li class="tabs-item"><i class="icon icon-character">&nbsp;</i>角色</li>
-      <li class="tabs-item"><i class="icon icon-groups">&nbsp;</i>组群</li>
-      <li class="tabs-item"><i class="icon icon-subjection">&nbsp;</i>隶属</li>
-      <li class="tabs-item"><i class="icon icon-user">&nbsp;</i>用户</li>
+      <li class="tabs-item"
+        ng-repeat="module in vm.modules"
+        ng-click="vm.switching(module.key)"
+        ng-class="{'selected': vm.selected == module.key}">
+        <i class="icon icon-{{module.key}}">&nbsp;</i>
+        {{module.name}}
+      </li>
+<!--       <li class="tabs-item selected"><i class="icon icon-character">&nbsp;</i>角色</li>
+<li class="tabs-item"><i class="icon icon-groups">&nbsp;</i>组群</li>
+<li class="tabs-item"><i class="icon icon-subjection">&nbsp;</i>隶属</li>
+<li class="tabs-item"><i class="icon icon-user">&nbsp;</i>用户</li> -->
     </ul>
     <div id="gundam-side-bottom">
       <button class="round raund-blue">退</button>
     </div>
   </div>
   <div id="gundam-container">
-    <div id="gundam-tool">
+    <div ui-view style="height:100%;">{{vm.selected}}</div>
+  </div>
+</div>
+
+<!--   <div id="gundam-tool">
       组群名称：<input type="text" class="inline-input" style="margin-right:26px;">
-      使用时间：
+      使用时间：<input type="text" class="inline-input" style="width:105px;" placeholder="yyyy/mm/dd"> - <input type="text" class="inline-input" style="width:105px;margin-right:26px;" placeholder="yyyy/mm/dd">
       客户类型：
+      <div class="select-control" style="width:100px;margin-right:26px;">
+        <div class="select-input selected">请选择</div>
+        <div class="select-dropdown" style="display:none;">
+          <div class="select-dropdown-content">
+            <div class="option">豆角烧茄子</div>
+          </div>
+        </div>
+      </div>
       角色类型：
+      <div class="select-control" style="width:100px;margin-right:26px;">
+        <div class="select-input selected">请选择</div>
+        <div class="select-dropdown" style="display:none;">
+          <div class="select-dropdown-content">
+            <div class="option">豆角烧茄子</div>
+          </div>
+        </div>
+      </div>
       <button class="round-min raund-blue">查</button>
     </div>
     <div id="gundam-content">
@@ -157,10 +184,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
- -->
-
-<iframe src=' http://dps.dfinder.cn/jump.html?dim=[{"codeName":"indicatorCode","codes":["00010000050359"]}]&productID=00010000000000000000000000000001&uid=1000000058&secretKey=lfsyuxigkq'
-     marginheight="0" marginwidth="0" frameborder="0" scrolling="no" width=100% height=738 id="iframepage" name="iframepage" ></iframe>
+    </div> -->
