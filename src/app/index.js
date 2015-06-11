@@ -2,37 +2,84 @@
   'use strict';
 
   angular
-    .module('gundam', [
-      'ui.router',
-      'ngResource',
-      'ngSanitize',
-      'gundam.core'])
+    .module('gundam', ['ui.router', 'ngResource', 'ngSanitize',
+      'gundam.core', 'gundam.roles'])
     .config(appConfig);
 
-  appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-  function appConfig ($stateProvider, $urlRouterProvider) {
+    appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+    function appConfig ($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state('home', {
+          url: '/',
+          templateUrl: 'app/core/layout.html',
+          controller: 'LayoutCtrl as ly'
+        })
+        .state('home.layout', {
+          url: ':module/:num',
+          templateUrl: function(stateParams) {
+            var module = stateParams.module;
+            return 'app/' + module + '/' + module + '.html';
+          },
+          controllerProvider: ['$stateParams', '$timeout', 'layoutService',
+            function($stateParams, $timeout, layoutService) {
+              var module = $stateParams.module;
+              $timeout(function() {
+                layoutService.selectModule(module);
+              }, 100);
+              return $stateParams.module + 'Ctrl';
+            }]
+        });
 
-    $stateProvider
-      .state('home', {
-        url: '/orz',
-        templateUrl: 'app/core/layout.html',
-        controller: 'IndexCtrl as vm'
-      })
-      .state('home.layout', {
-        url: '/:module',
-        templateUrl: function(stateParam) {
-          console.info(stateParam);
-        },
-        controller: 'IndexCtrl as vm'
-      })
-      /*.state('home.character', {
-        url: '/character',
-        templateUrl: 'app/character/character.html'
-      });*/
-
-    $urlRouterProvider.otherwise('/orz');
-
-  }
+      $urlRouterProvider.otherwise('/');
+    }
 })();
+
+
+
+
+
+
+
+// (function() {
+//   'use strict';
+
+//   angular
+//     .module('gundam', ['ui.router', 'ngResource', 'ngSanitize'])
+//     .value('coreCF', {
+//       urlMap: {
+//         'character': 'www.baiud.com'
+//       }
+//     })
+//     .config(appConfig);
+    
+
+//   appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+//   function appConfig ($stateProvider, $urlRouterProvider) {
+// alert(1);
+//     // $stateProvider
+//     //   .state('home', {
+//     //     url: '/',
+//     //     templateUrl: 'app/core/layout.html',
+//     //     controller: 'LayoutCtrl as ly'
+//     //   })
+//     //   .state('home.layout', {
+//     //     url: ':module',
+//     //     templateUrl: function(stateParams) {
+//     //       var module = stateParams.module;
+//     //       return 'app/'+ module +'/'+ module +'.html';
+//     //     }/*,
+//     //     controllerProvider: ['$stateParams', '$timeout', 'layoutService',
+//     //       function($stateParams, $timeout, layoutService) {
+//     //         var module = $stateParams.module;
+//     //         $timeout(function() {
+//     //           layoutService.selectModule(module);
+//     //         }, 100);
+//     //     }]*/
+//     //   });
+
+//     //  $urlRouterProvider.otherwise('/');
+
+//   }
+// })();
 
 

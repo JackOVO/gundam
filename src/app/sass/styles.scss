@@ -84,7 +84,8 @@ $gundam-content-table-header-bg-color: #f0f0f0;
         table {
           width: 100%;
           border: 1px solid $gundam-content-table-border-color;
-          tr > td:nth-child(1) { padding-left: $gundam-content-table-first-left; }
+          tr > td { padding-left: $gundam-content-table-first-left; }
+          span { line-height: 1; }
         }
 
         thead td {
@@ -97,8 +98,10 @@ $gundam-content-table-header-bg-color: #f0f0f0;
         tbody {
           tr:nth-child(even) > td { background-color: $gundam-content-table-even-color; }
           tr:nth-child(odd) > td {  background-color: $gundam-content-table-odd-color; }
-          td {  height: $gundam-content-table-td-height; }
-          tr > td:nth-child(1) { padding-left: $gundam-content-table-first-left; }
+          td {
+            height: $gundam-content-table-td-height;
+            line-height: .7;
+          }
         }
 
         #gundam-content-page {

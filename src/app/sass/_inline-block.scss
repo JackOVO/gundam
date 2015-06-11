@@ -19,4 +19,11 @@
     color: $fna-color;
     text-decoration: none;
   }
+
+  .fn-fonthid {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

@@ -39,23 +39,23 @@ $icon-container-width: rem-clac(16);
   }
 
   .icon-user { line-height: 32px; }
+  .icon-roles { line-height: 32px; }
   .icon-groups { line-height: 32px; }
-  .icon-character { line-height: 32px; }
   .icon-subjection { line-height: 32px; }
 
   // /assets/images/
-  .icon-sprite, .icon-character, .icon-groups, .icon-subjection, .icon-triangle, .icon-user {
-    background-image: url('/assets/images/icon-se5ed1420d5.png');
+  .icon-sprite, .icon-groups, .icon-roles, .icon-subjection, .icon-triangle, .icon-user {
+    background-image: url('/assets/images/icon-s3bd6729347.png');
     background-repeat: no-repeat;
   }
 
-  .icon-character {
+  .icon-groups {
     background-position: 0 0;
     height: 32px;
     width: 41px;
   }
 
-  .icon-groups {
+  .icon-roles {
     background-position: 0 -32px;
     height: 32px;
     width: 41px;
@@ -78,6 +78,5 @@ $icon-container-width: rem-clac(16);
     height: 32px;
     width: 41px;
   }
-
 
 }
