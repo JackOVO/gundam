@@ -10,12 +10,11 @@
     var that = this;
     that.selected = null;
     that.modules = layoutService.getModules();
-    that.switching = function(key) { $state.go('home.layout', {module: key}); };
+    that.switching = function(key) { $state.go('home.layout', {module: key, num: 1}); };
 
     var spk = config.spreadKey;
 
     $scope.$on(spk.selectedModuleKeyChange, function(e, moduleKey) {
-console.info(moduleKey);
 that.selected = moduleKey;
     });
 

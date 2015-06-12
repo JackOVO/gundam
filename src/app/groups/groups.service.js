@@ -1,14 +1,14 @@
-(function() {
+(function(){
   'use strict';
 
   angular
-    .module('gundam.roles')
-    .factory('rolesService', rolesService);
+    .module('gundam.groups')
+    .factory('groupsService', groupsService);
 
-  rolesService.$inject = ['dataService', 'rolesBean'];
-  function rolesService(dataService, rolesBean) {
+  groupsService.$inject = ['groupsBean', 'dataService'];
+  function groupsService(groupsBean, dataService) {
     var service = {
-      'getList': getRolesList,
+      'getList': getGroupsList,
       'keys': createColHead()
     };
     var priv = {
@@ -18,18 +18,18 @@
     return service;
 
     /**
-     * 获取角色列表并进行转换后返回
+     * 获取群组列表并进行转换后返回
      * @param  {Number} pageNum 页码
      * @return {Promise} 承诺
      */
-    function getRolesList(pageNum) {
+    function getGroupsList(pageNum) {
       var params = {
         'pn': pageNum,
         'ps': priv.pageSize,
         'action': priv.listAction
       };
 
-      return dataService.get('roles', params)
+      return dataService.get('groups', params)
         .then(function(source) {
           if (!source) { return null; }
           return parseList(source);
@@ -41,7 +41,7 @@
      * @return {Array} 列表头
      */
     function createColHead() {
-      var kvmap = rolesBean.kvMap;
+      var kvmap = groupsBean.kvMap;
       kvmap.push({
         'text': '功能',
         'html': function(role) {
@@ -60,13 +60,13 @@
      */
     function parseList(source) {
       var result = {'list': [], count: 0};
-      angular.forEach(source.roleInfoBOLst, function(val, key) {
-        var roles = rolesBean.parse(val);
-        result.list.push(roles);
+      angular.forEach(source.userList, function(val, key) {
+        var group = groupsBean.parse(val);
+        result.list.push(group);
       });
       result.count = source.pageCount;
       return result;
     }
-  }
 
+  }
 })();

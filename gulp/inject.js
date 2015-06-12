@@ -28,6 +28,7 @@ module.exports = function(options) {
     return gulp.src(options.src + '/*.html')
       .pipe($.inject(injectStyles, injectOptions))
       .pipe($.inject(injectScripts, injectOptions))
+      .pipe($.order(['*.module.js']))
       .pipe(wiredep(options.wiredep))
       .pipe(gulp.dest(options.tmp + '/serve'));
 

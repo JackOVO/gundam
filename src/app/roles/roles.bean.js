@@ -5,9 +5,15 @@
     .module('gundam.roles')
     .factory('rolesBean', rolesBean);
 
+  var kvMap = [
+    {'key': 'name', 'text': '名称'},
+    {'key': 'desc', 'text': '描述'}
+  ];
+
   function rolesBean () {
     var service = {
-      'parse': parse
+      'parse': parse,
+      'kvMap': kvMap
     };
     return service;
 

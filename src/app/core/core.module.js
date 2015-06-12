@@ -6,7 +6,8 @@
     .constant('coreCF', {
       baseUrl: 'http://192.168.1.57:8080/DFinderManagementSystem/',
       urlMap: {
-        'roles': 'roles'
+        'roles': 'roles',
+        'groups': 'groups'
       },
       spreadKey: {
         'selectedModuleKeyChange': 'cmkc'

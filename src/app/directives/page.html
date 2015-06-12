@@ -1,0 +1,8 @@
+<div class="page">
+  <a href="javascript:;" class="prev disabled">&lt;</a>
+  <a href="javascript:;"
+    ng-repeat="number in pageAry"
+    ng-class="{'selected': num == number}"
+    ng-click="go(number)">{{number}}</a>
+  <a href="javascript:;" class="next">&gt;</a>
+</div>

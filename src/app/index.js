@@ -3,7 +3,8 @@
 
   angular
     .module('gundam', ['ui.router', 'ngResource', 'ngSanitize',
-      'gundam.core', 'gundam.roles'])
+      'gundam.core', 'gundam.directives',
+      'gundam.roles', 'gundam.groups'])
     .config(appConfig);
 
     appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -26,7 +27,7 @@
               $timeout(function() {
                 layoutService.selectModule(module);
               }, 100);
-              return $stateParams.module + 'Ctrl';
+              return $stateParams.module + 'Ctrl as vm';
             }]
         });
 
