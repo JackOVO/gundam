@@ -2,9 +2,10 @@
   'use strict';
 
   angular
-    .module('gundam', ['ui.router', 'ngResource', 'ngSanitize',
+    .module('gundam', ['ui.router', 'ngResource', 'ngSanitize', 'ui.bootstrap',
       'gundam.core', 'gundam.directives',
-      'gundam.roles', 'gundam.groups'])
+      'gundam.roles', 'gundam.groups',
+      'gundam.user'])
     .config(appConfig);
 
     appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

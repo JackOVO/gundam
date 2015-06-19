@@ -5,7 +5,27 @@
       <button class="round-min raund-red">十</button>
     </div>
     <div id="gundam-content-table">
-      <list colhead="vm.colHead" data="vm.list"></list>
+      <div style="height:100%;overflow-y:auto;">
+        <table>
+          <thead>
+            <tr>
+              <td>名称</td>
+              <td>介绍</td>
+              <td>功能</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in vm.list">
+              <td>{{item.name}}</td>
+              <td>{{item.desc}}</td>
+              <td>
+  <a href="javascript:;" class="fna" ng-click="vm.del(item.code)">详情</a>
+  <a href="javascript:;" class="fna" ng-click="vm.del(item.code, item.name)">删除</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div id="gundam-content-page" ng-show="vm.count > 1">
         <page num="vm.num" count="vm.count" go="vm.gogo"></page>
       </div>

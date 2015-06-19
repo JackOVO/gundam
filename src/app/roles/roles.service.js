@@ -8,12 +8,12 @@
   rolesService.$inject = ['dataService', 'rolesBean'];
   function rolesService(dataService, rolesBean) {
     var service = {
-      'getList': getRolesList,
-      'keys': createColHead()
+      'del': delRolesByCode,
+      'getList': getRolesList
     };
     var priv = {
       listAction: 'list',
-      pageSize: 3
+      pageSize: 10
     };
     return service;
 
@@ -37,21 +37,39 @@
     }
 
     /**
+     * 删除角色信息
+     * @param  {String} code 角色id
+     * @return {promise} 承诺
+     */
+    function delRolesByCode(code) {
+      var params = {'roleCode': code, 'action': 'delete'};
+
+      return dataService.get('roles', params)
+        .then(function(source) {
+          if (!source) {
+            console.error('删除失败!', source);
+          }
+          return source;
+        });
+    }
+
+    /**
      * 创建列表头
      * @return {Array} 列表头
      */
-    function createColHead() {
-      var kvmap = rolesBean.kvMap;
-      kvmap.push({
-        'text': '功能',
-        'html': function(role) {
-          var html = '<a href="javascript:alert(0);" class="fna">详情</a>' + 
-            '<a href="javascript:alert(1);" class="fna">删除</a>';
-          return html;
-        }
-      });
-      return kvmap;
-    }
+//     function createColHead() {
+//       var kvmap = rolesBean.kvMap;
+//       kvmap.push({
+//         'text': '功能',
+//         'html': function(role) {
+//           var html = '' +
+// '<a href="javascript:;" ng-click="$parent.fn(\'detail\', '+role.code+')" class="fna">详情</a>'+ 
+// '<a href="javascript:;" ng-click="$parent.fn(\'del\', '+role.code+')" class="fna">删除</a>';
+//           return html;
+//         }
+//       });
+//       return kvmap;
+//     }
 
     /**
      * 后转前列表结果

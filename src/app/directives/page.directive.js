@@ -30,19 +30,25 @@
           }
 
           for (;index <= length; index++) { array.push(index === num?''+index:index); }
-console.info(array, num, count);
           return array;
         }
 
       },
       templateUrl: 'app/directives/page.html',
       link: function(scope, element, attrs, ctrl) {
+        var count = scope.count;
         var go = scope.go();
 
-        scope.go = go;
+        scope.go = function(num) {
+          console.info(num);
+          if (num <= 0 || num > count) { return; }
+          go(num);
+        };
 
-        scope.$watch('count', function(num) {
-          scope.pageAry = ctrl.createPageNum(num, scope.count);
+        scope.$watch('count', function(cNum) {
+          // 重新得到页码
+          scope.pageAry = ctrl.createPageNum(scope.num, cNum);
+          count = cNum;
         });
       }
     };
