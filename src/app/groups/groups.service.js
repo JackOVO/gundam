@@ -8,12 +8,14 @@
   groupsService.$inject = ['groupsBean', 'dataService'];
   function groupsService(groupsBean, dataService) {
     var service = {
+      'del': delGroups,
+      'get': groupsDetail,
       'getList': getGroupsList,
-      'keys': createColHead()
+      'search': searchGroupsList
     };
     var priv = {
       listAction: 'list',
-      pageSize: 3
+      pageSize: 10
     };
     return service;
 
@@ -36,22 +38,44 @@
         });
     }
 
-    /**
-     * 创建列表头
-     * @return {Array} 列表头
-     */
-    function createColHead() {
-      var kvmap = groupsBean.kvMap;
-      kvmap.push({
-        'text': '功能',
-        'html': function(role) {
-          var html = '<a href="javascript:alert(0);" class="fna">详情</a>' + 
-            '<a href="javascript:alert(1);" class="fna">删除</a>';
-          return html;
-        }
-      });
-      return kvmap;
+    function searchGroupsList(pageNum, p) {
+      console.info(p);
+      var params = {
+        'action': 'search',
+        'type': p.khtype && p.khtype.code,
+        'name': p.name,
+        'endDate': p.endDate,
+        'roleCode': p.rltype && p.rltype.code,
+        'startDate': p.startDate,
+        'pn': pageNum,
+        'ps': priv.pageSize,
+      };
+
+      return dataService.get('groups', params)
+        .then(function(source) {
+          if (!source) { return null; }
+          return parseList(source);
+        });
     }
+
+    function groupsDetail(code) {
+      var params = {'code': code, 'action': 'detail'};
+
+      return dataService.get('groups', params)
+        .then(function(source) {
+          return source;
+        });
+    }
+
+    function delGroups(code) {
+      var params = {'code': code, 'action': 'delete'};
+
+      return dataService.get('groups', params)
+        .then(function(source) {
+          return source;
+        })
+    }
+
 
     /**
      * 后转前列表结果

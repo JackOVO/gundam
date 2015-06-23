@@ -40,7 +40,6 @@
         var go = scope.go();
 
         scope.go = function(num) {
-          console.info(num);
           if (num <= 0 || num > count) { return; }
           go(num);
         };

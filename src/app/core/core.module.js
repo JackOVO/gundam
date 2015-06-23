@@ -7,7 +7,9 @@
       baseUrl: 'http://192.168.1.57:8080/DFinderManagementSystem/',
       urlMap: {
         'roles': 'roles',
-        'groups': 'groups'
+        'groups': 'groups',
+        'object': 'newObject',
+        'user': 'users'
       },
       spreadKey: {
         'selectedModuleKeyChange': 'cmkc'

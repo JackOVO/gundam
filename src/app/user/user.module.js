@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('gundam.user', ['gundam.core']);
+    .module('gundam.user', ['gundam.core', 'gundam.roles']);
 })();

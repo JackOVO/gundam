@@ -5,6 +5,8 @@
 @import "page.scss";
 @import "select.scss";
 @import "inline-block.scss";
+@import "dialog.scss";
+@import "table.scss";
 @import "global.scss";
 
 div {
@@ -64,7 +66,7 @@ $gundam-content-table-header-bg-color: #f0f0f0;
     #gundam-tool {
       height: $gundam-tool-height;
       margin-top: -$gundam-tool-height;
-      line-height: $gundam-tool-height;
+      line-height: 42px;
       background-color: $gundam-tool-bg-color;
       padding-left: $gundam-tool-padding-left;
       font-size: 14px;

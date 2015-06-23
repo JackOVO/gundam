@@ -8,8 +8,9 @@
   userService.$inject = ['userBean', 'dataService'];
   function userService(userBean, dataService) {
     var service = {
-      'getList': getUserList,
-      'keys': createColHead()
+      'get': getUser,
+      'del': deleteUser,
+      'getList': getUserList
     };
     var priv = {
       listAction: 'list',
@@ -29,28 +30,56 @@
         'action': priv.listAction
       };
 
-      return dataService.get('groups', params)
+      return dataService.get('user', params)
         .then(function(source) {
           if (!source) { return null; }
           return parseList(source);
         });
     }
 
-    /**
-     * 创建列表头
-     * @return {Array} 列表头
-     */
-    function createColHead() {
-      var kvmap = userBean.kvMap;
-      kvmap.push({
-        'text': '功能',
-        'html': function(role) {
-          var html = '<a href="javascript:alert(0);" class="fna">详情</a>' + 
-            '<a href="javascript:alert(1);" class="fna">删除</a>';
-          return html;
-        }
-      });
-      return kvmap;
+    // 获取用户
+    function getUser(code) {
+      var params = {
+        'action': 'detail',
+        'usrCode': code
+      };
+
+      return dataService.get('user', params)
+        .then(function(source) {
+          return source;
+        });
+    }
+
+    function searchUser(code, p) {
+      var params = {
+          'action': 'search',
+          'type': p.type,
+          'name': p.name,
+          'endDate': p.endDate,
+          'roleCode': p.roleCode,
+          'startDate': p.startDate,
+          'pn': pageNum,
+          'ps': priv.pageSize,
+      };
+
+      // return dataService.get('groups', params)
+      //   .then(function(source) {
+      //     if (!source) { return null; }
+      //     return parseList(source);
+      //   });
+    }
+
+    // 删除
+    function deleteUser(code) {
+      var params = {
+        'action': 'delete',
+        'usrCode': code
+      };
+
+      return dataService.get('user', params)
+        .then(function(source) {
+          return source;
+        });
     }
 
     /**

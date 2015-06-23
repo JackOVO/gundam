@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('gundam', ['ui.router', 'ngResource', 'ngSanitize', 'ui.bootstrap',
+    .module('gundam', ['ui.router', 'ngResource', 'ngSanitize', 'ui.bootstrap', 'ui.select',
       'gundam.core', 'gundam.directives',
       'gundam.roles', 'gundam.groups',
       'gundam.user'])

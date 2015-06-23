@@ -8,14 +8,32 @@
   rolesService.$inject = ['dataService', 'rolesBean'];
   function rolesService(dataService, rolesBean) {
     var service = {
+      'get': getRolesByCode,
       'del': delRolesByCode,
-      'getList': getRolesList
+      'getFnList': getFnList,
+      'getList': getRolesList,
+      'getAll': getAllRolesList,
+      'add': addRoles
     };
     var priv = {
       listAction: 'list',
       pageSize: 10
     };
     return service;
+
+    function addRoles(roles) {
+      var params = {
+        'action': 'add',
+        'funcCode': roles.funcCode,
+        'roleName': roles.name,
+        'desc': roles.desc
+      };
+
+      return dataService.get('roles', params)
+        .then(function(source) {
+          return source;
+        });
+    }
 
     /**
      * 获取角色列表并进行转换后返回
@@ -37,9 +55,35 @@
     }
 
     /**
+     * 获取全局的角色
+     * @return {[type]} [description]
+     */
+    function getAllRolesList() {
+      var params = {'action': 'simpleList'};
+
+      return dataService.get('roles', params)
+        .then(function(source) {
+          //if (!source) { return null; }
+          return source;
+        });
+    }
+
+    // 获取功能方法
+    function getFnList() {
+      var params = {
+        'action': 'newRole'
+      };
+
+      return dataService.get('object', params)
+        .then(function(source) {
+          return source;
+        });
+    }
+
+    /**
      * 删除角色信息
      * @param  {String} code 角色id
-     * @return {promise} 承诺
+     * @return {Promise} 承诺
      */
     function delRolesByCode(code) {
       var params = {'roleCode': code, 'action': 'delete'};
@@ -47,29 +91,30 @@
       return dataService.get('roles', params)
         .then(function(source) {
           if (!source) {
-            console.error('删除失败!', source);
+            console.error('删除角色失败!', source, code);
           }
           return source;
         });
     }
 
     /**
-     * 创建列表头
-     * @return {Array} 列表头
+     * 获取角色信息根据code
+     * @param  {String} code 角色code
+     * @return {Promise} 承诺
      */
-//     function createColHead() {
-//       var kvmap = rolesBean.kvMap;
-//       kvmap.push({
-//         'text': '功能',
-//         'html': function(role) {
-//           var html = '' +
-// '<a href="javascript:;" ng-click="$parent.fn(\'detail\', '+role.code+')" class="fna">详情</a>'+ 
-// '<a href="javascript:;" ng-click="$parent.fn(\'del\', '+role.code+')" class="fna">删除</a>';
-//           return html;
-//         }
-//       });
-//       return kvmap;
-//     }
+    function getRolesByCode(code) {
+      var params = {'roleCode': code, 'action': 'detail'};
+
+      return dataService.get('roles', params)
+        .then(function(source) {
+          if (!source) {
+            console.error('获取角色失败!', source, code);
+          }
+          //var roles = rolesBean.parse(source);
+          return source;
+        });
+    }
+
 
     /**
      * 后转前列表结果

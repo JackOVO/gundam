@@ -1,0 +1,41 @@
+<div class="dialog" style="min-width:461px;margin-left:-90px;">
+  <div class="dialog-header">
+    {{title}}
+    <span class="icon-bar">
+      <i class="icon remove"></i>
+    </span>
+  </div>
+  <div class="dialog-content">
+    <table class="table-grid"><tbody>
+      <tr><td class="table-top" colspan="2"></td></tr>
+      <tr class="highlight">
+        <th>角色名称：</th>
+        <td>
+          <input type="text" ng-model="roles.name" style="margin-top:-10px;width:100%;margin-bottom: -5px;border:0;outline:0;">
+        </td>
+      </tr>
+      <tr><td class="table-top" colspan="2"></td></tr>
+      <tr class="highlight">
+        <th>角色描述：</th>
+        <td>
+<textarea ng-model="roles.desc"
+  style="height:140px;width:100%;outline:0;border:0;margin-top:-2px;resize:none;"></textarea>
+        </td>
+      </tr>
+    </tbody></table>
+    <div class="more-block">
+      <div class="more-row">
+        <label class="label-font">功能选项：</label>&nbsp;&nbsp;
+        <label class="checkbox break fn-fonthid" 
+          style="margin-right: 10px;" 
+          ng-repeat="fn in fns"
+          ng-class="{'selected': fn.isChoosed}"
+          ng-click="checkFn(fn)">{{fn.functionName}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-bottom">
+    <button class="tiny cancel" ng-show="cancel" ng-click="cancel()">取消</button>
+    <button class="small confirm" ng-show="confirm" ng-click="confirm()">确定</button>
+  </div>
+</div>

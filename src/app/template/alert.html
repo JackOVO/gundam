@@ -1,7 +1,12 @@
-<div style="position:absolute; top:40%; left:50%; width:300px; height:86px; background-color: white; margin-left: -150px;border:1px solid black;outline:0;">
-  <p>{{message}}</p>
-  <div style="text-align:right;">
-    <button ng-click="cancel()">取消</button>
-    <button ng-click="confirm()">确定</button>
+<div class="dialog">
+  <div class="dialog-header">
+    {{title}}
+  </div>
+  <div class="dialog-content">
+    <p class="dialog-text">{{message}}</p>
+  </div>
+  <div class="dialog-bottom">
+    <button class="tiny cancel" ng-click="cancel()">取消</button>
+    <button class="small confirm" ng-click="confirm()">确定</button>
   </div>
 </div>

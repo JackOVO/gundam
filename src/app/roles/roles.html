@@ -2,7 +2,7 @@
   <div id="gundam-tool"></div>
   <div id="gundam-content">
     <div id="gundam-content-tool" class="right">
-      <button class="round-min raund-red">十</button>
+      <button class="round-min raund-red" ng-click="vm.add()">十</button>
     </div>
     <div id="gundam-content-table">
       <div style="height:100%;overflow-y:auto;">
@@ -19,7 +19,7 @@
               <td>{{item.name}}</td>
               <td>{{item.desc}}</td>
               <td>
-  <a href="javascript:;" class="fna" ng-click="vm.del(item.code)">详情</a>
+  <a href="javascript:;" class="fna" ng-click="vm.detail(item.code)">详情</a>
   <a href="javascript:;" class="fna" ng-click="vm.del(item.code, item.name)">删除</a>
               </td>
             </tr>

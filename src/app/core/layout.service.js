@@ -11,7 +11,7 @@
     var moduleAry = [
       {key: 'roles', name: '角色'},
       {key: 'groups', name: '群组'},
-      {key: 'subjection', name: '隶属'},
+      //{key: 'subjection', name: '隶属'},
       {key: 'user', name: '用户'}
     ];
 

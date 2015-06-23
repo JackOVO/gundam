@@ -1,0 +1,56 @@
+<div class="dialog" style="min-width:461px;margin-left:-90px;">
+  <div class="dialog-header">
+    {{title}}
+    <span class="icon-bar">
+      <i class="icon remove"></i>
+    </span>
+  </div>
+  <div class="dialog-content">
+    <table class="table-grid"><tbody>
+      <tr><td class="table-top" colspan="2"></td></tr>
+      <tr class="highlight">
+        <th>群组名称：</th>
+        <td>
+          {{source.gib.groupName}}
+        </td>
+      </tr>
+      <tr><td class="table-top" colspan="2"></td></tr>
+      <tr class="highlight">
+        <th>群组描述：</th>
+        <td>
+<textarea style="height:50px;width:100%;outline:0;border:0;margin-top:-2px;resize:none;"
+  ng-bind="source.rbBo.desc">{{source.gib.desc}}</textarea>
+        </td>
+      </tr>
+      <tr><th>使用时间:</th><td>
+        {{source.csb.startDate}} - {{source.csb.endDate}}
+      </td></tr>
+      <tr><th>产品线:</th><td>
+        <label class="checkbox break fn-fonthid" 
+          style="margin-right: 10px;" 
+          ng-repeat="pro in source.proList"
+          ng-class="{'selected': pro.isChoosed}">{{pro.productName}}</label>
+      </td></tr>
+      <tr><th>用户类型:</th>
+      <td>{{source.csb.clientType}}</td></tr>
+      <tr><th style="padding-bottom: 0;">角色:</th>
+        <td style="padding-bottom: 0;">
+        <label class="checkbox break fn-fonthid" 
+          style="margin-right: 10px;" 
+          ng-repeat="role in source.roleList"
+          ng-class="{'selected': role.isChoosed}">{{role.roleName}}</label>
+      </td></tr>
+      <tr class="highlight">
+        <th>IP信息：</th>
+        <td>
+        <div style="width: 350px;  overflow: auto;">
+          <p ng-repeat="ip in source.iplist" style="padding:0;margin:0 0 5px 0;white-space: nowrap;">{{ip.start + '-' + ip.end}}</p>
+        </div>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div class="dialog-bottom">
+    <button class="tiny cancel" ng-click="cancel()">取消</button>
+  </div>
+</div>
